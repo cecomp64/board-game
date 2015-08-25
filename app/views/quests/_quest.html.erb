@@ -1,0 +1,18 @@
+<div class="quest_wrapper">
+<div class="quest_card">
+  <div class="quest_header"> 
+    <div class="title"><%=quest.title%></div>
+    <span class="roll"><%=quest.roll%>+</span>
+  </div>
+  <div class="quest_picture">...</div>
+  <div class="quest_text"><%=quest.text%></div>
+  <div class="quest_modifiers">
+    <% quest.modifier_instances.each do |mi| %>
+      <%= mi.to_words %>
+    <% end %>
+  </div>
+</div>
+<div class="web-only">
+  <%= link_to "Edit", edit_quest_path(quest) %>
+</div>
+</div>

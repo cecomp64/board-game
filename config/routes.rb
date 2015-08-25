@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :modifier_instances
+  resources :modifiers
+  resources :spaces
+  resources :geographies
+  resources :helpers
+  resources :quests
+
+  post 'helpers/add_modifier' => 'helpers#add_modifier'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

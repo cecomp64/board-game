@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Modifiers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Space</th>
+      <th>Geography</th>
+      <th>Name</th>
+      <th>Roll</th>
+      <th>Draw</th>
+      <th>Move</th>
+      <th>Turn</th>
+      <th>Banked turns</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modifiers.each do |modifier| %>
+      <tr>
+        <td><%= modifier.space_id %></td>
+        <td><%= modifier.geography_id %></td>
+        <td><%= modifier.name %></td>
+        <td><%= modifier.roll %></td>
+        <td><%= modifier.draw %></td>
+        <td><%= modifier.move %></td>
+        <td><%= modifier.turn %></td>
+        <td><%= modifier.banked_turns %></td>
+        <td><%= link_to 'Show', modifier %></td>
+        <td><%= link_to 'Edit', edit_modifier_path(modifier) %></td>
+        <td><%= link_to 'Destroy', modifier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modifier', new_modifier_path %>

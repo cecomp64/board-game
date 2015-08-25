@@ -1,0 +1,22 @@
+<h1>Editing Helper</h1>
+
+<div class="left">
+  <%= render partial: "helper", locals: {helper:@helper} %>
+</div>
+
+<div class="right">
+  <h2>Card Details</h2>
+  <%= render 'form' %>
+
+  <h2>Modifiers</h2>
+  <ul>
+    <% @helper.modifier_instances.each do |mi| %>
+      <li><%= mi.to_words %> <%= link_to "Remove", {action: :add_modifier, controller: :helpers, helper_id: @helper.id, modifier: mi.id, remove: true}, method: :post %></li>
+    <% end %>
+  </ul>
+  <%= form_tag controller: :helpers, action: :add_modifier do %>
+    <%= hidden_field_tag :helper_id, @helper.id %>
+    <%= select_tag "modifier", options_from_collection_for_select(ModifierInstance.all.order("geography_id asc"), "id", "name") %>
+    <%= submit_tag "Add Modifier" %>
+  <% end %>
+</div>

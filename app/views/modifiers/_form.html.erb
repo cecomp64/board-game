@@ -1,0 +1,49 @@
+<%= form_for(@modifier) do |f| %>
+  <% if @modifier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@modifier.errors.count, "error") %> prohibited this modifier from being saved:</h2>
+
+      <ul>
+      <% @modifier.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :space_id %><br>
+    <%= f.number_field :space_id %>
+  </div>
+  <div class="field">
+    <%= f.label :geography_id %><br>
+    <%= f.number_field :geography_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :roll %><br>
+    <%= f.number_field :roll %>
+  </div>
+  <div class="field">
+    <%= f.label :draw %><br>
+    <%= f.number_field :draw %>
+  </div>
+  <div class="field">
+    <%= f.label :move %><br>
+    <%= f.number_field :move %>
+  </div>
+  <div class="field">
+    <%= f.label :turn %><br>
+    <%= f.number_field :turn %>
+  </div>
+  <div class="field">
+    <%= f.label :banked_turns %><br>
+    <%= f.number_field :banked_turns %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

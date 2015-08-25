@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Helpers</h1>
+
+<% @helpers.each do |helper| %>
+  <%= render partial: "helper", locals: {helper: helper} %>
+<% end %>

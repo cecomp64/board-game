@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Geography:</strong>
+  <%= @modifier_instance.geography_id %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @modifier_instance.space_id %>
+</p>
+
+<p>
+  <strong>Modifier:</strong>
+  <%= @modifier_instance.modifier_id %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @modifier_instance.character_id %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @modifier_instance.character %>
+</p>
+
+<%= link_to 'Edit', edit_modifier_instance_path(@modifier_instance) %> |
+<%= link_to 'Back', modifier_instances_path %>

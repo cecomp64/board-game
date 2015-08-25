@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @modifier.space_id %>
+</p>
+
+<p>
+  <strong>Geography:</strong>
+  <%= @modifier.geography_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @modifier.name %>
+</p>
+
+<p>
+  <strong>Roll:</strong>
+  <%= @modifier.roll %>
+</p>
+
+<p>
+  <strong>Draw:</strong>
+  <%= @modifier.draw %>
+</p>
+
+<p>
+  <strong>Move:</strong>
+  <%= @modifier.move %>
+</p>
+
+<p>
+  <strong>Turn:</strong>
+  <%= @modifier.turn %>
+</p>
+
+<p>
+  <strong>Banked turns:</strong>
+  <%= @modifier.banked_turns %>
+</p>
+
+<%= link_to 'Edit', edit_modifier_path(@modifier) %> |
+<%= link_to 'Back', modifiers_path %>
