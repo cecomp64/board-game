@@ -13,6 +13,7 @@
   </div>
 </div>
 <div class="web-only">
-  <%= link_to "Edit", edit_helper_path(helper) %>
+  <%= link_to "Edit", edit_helper_path(helper) %> | 
+  <%= link_to "Delete", helper, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 </div>
