@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Quests</h1>
+<p id="notice"><%= notice %></p>
+<p><%= link_to "New Quest", new_quest_path %></p>
 
 <% @quests.each do |quest| %>
   <%= render partial: "quest", locals: {quest:quest} %>

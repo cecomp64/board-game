@@ -21,7 +21,7 @@
   <tbody>
     <% @modifiers.each do |modifier| %>
       <tr>
-        <td><%= modifier.name %></td>
+        <td><%= link_to modifier.name, edit_modifier_path(modifier) %></td>
         <td><%= modifier.roll %></td>
         <td><%= modifier.draw %></td>
         <td><%= modifier.draw_other %></td>

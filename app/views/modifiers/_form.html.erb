@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :space_id %><br>
-    <%= f.number_field :space_id %>
-  </div>
-  <div class="field">
-    <%= f.label :geography_id %><br>
-    <%= f.number_field :geography_id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -32,8 +24,20 @@
     <%= f.number_field :draw %>
   </div>
   <div class="field">
+    <%= f.label :draw_other %><br>
+    <%= f.number_field :draw_other %>
+  </div>
+  <div class="field">
+    <%= f.label :draw_other_all %><br>
+    <%= f.number_field :draw_other_all %>
+  </div>
+  <div class="field">
     <%= f.label :move %><br>
     <%= f.number_field :move %>
+  </div>
+  <div class="field">
+    <%= f.label :move_other %><br>
+    <%= f.number_field :move_other %>
   </div>
   <div class="field">
     <%= f.label :turn %><br>
