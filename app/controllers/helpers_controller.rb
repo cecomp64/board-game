@@ -23,10 +23,19 @@ class HelpersController < ApplicationController
 
   def add_modifier
     mid = params[:modifier]
+    gid = params[:geography]
+    sid = params[:space]
     hid = params[:helper_id]
     remove = params[:remove]
-    m = ModifierInstance.where(id: mid).first
+    m = Modifier.where(id: mid).first
+    g = Geography.where(id: gid).first
+    s = Space.where(id: sid).first
     h = Helper.where(id: hid).first
+
+    if remove
+      mi = ModifierInstance.where(id: params[:modifier_instance]).first
+      h.modifier_instances.delete(mi)
+    end
 
     if m.nil?
       flash[:error] = "Could not find modifier with ID #{mid}"
@@ -34,11 +43,8 @@ class HelpersController < ApplicationController
       if h.nil?
         flash[:error] = "Could not find helper with ID #{hid}"
       else
-        if remove
-          h.modifier_instances.delete(m)
-        else
-          h.modifier_instances << m
-        end
+        mi = ModifierInstance.find_or_create_by(modifier: m, geography: g, space: s)
+        h.modifier_instances << mi
       end
     end
 

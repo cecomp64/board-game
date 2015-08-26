@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :quests
 
   post 'helpers/add_modifier' => 'helpers#add_modifier'
+  post 'quests/add_modifier' => 'quests#add_modifier'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,6 @@
 class QuestsController < ApplicationController
   before_action :set_quest, only: [:show, :edit, :update, :destroy]
+  include ModifierInstancesHelper
 
   # GET /quests
   # GET /quests.json
@@ -19,6 +20,12 @@ class QuestsController < ApplicationController
 
   # GET /quests/1/edit
   def edit
+  end
+
+  def add_modifier
+    @quest = Quest.where(id: params[:quest_id]).first
+    add_modifier_worker(params, @quest)
+    redirect_to edit_quest_path(@quest)
   end
 
   # POST /quests
@@ -42,13 +49,14 @@ class QuestsController < ApplicationController
   def update
     respond_to do |format|
       if @quest.update(quest_params)
-        format.html { redirect_to @quest, notice: 'Quest was successfully updated.' }
+        format.html { redirect_to edit_quest_path, notice: 'Quest was successfully updated.' }
         format.json { render :show, status: :ok, location: @quest }
       else
         format.html { render :edit }
         format.json { render json: @quest.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /quests/1

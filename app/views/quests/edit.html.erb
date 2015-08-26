@@ -1,6 +1,25 @@
 <h1>Editing Quest</h1>
 
-<%= render 'form' %>
+<div class="left">
+  <%= render partial: "quest", locals: {quest:@quest} %>
+</div>
 
-<%= link_to 'Show', @quest %> |
-<%= link_to 'Back', quests_path %>
+<div class="right">
+  <h2>Card Details</h2>
+  <%= render 'form' %>
+
+  <h2>Modifiers</h2>
+  <ul>
+    <% @quest.modifier_instances.each do |mi| %>
+      <li><%= mi.to_words %> <%= link_to "Remove", {action: :add_modifier, controller: :quests, quest_id: @quest.id, modifier_instance: mi.id, remove: true}, method: :post %></li>
+    <% end %>
+  </ul>
+  <%= form_tag controller: :quests, action: :add_modifier do %>
+    <%= hidden_field_tag :quest_id, @quest.id %>
+    <%= select_tag "modifier", options_from_collection_for_select(Modifier.all, "id", "name") %> in geography
+    <%= select_tag "geography", options_from_collection_for_select(Geography.all, "id", "name"), {include_blank: 'Any'} %> on space
+    <%= select_tag "space", options_from_collection_for_select(Space.all, "id", "name"), {include_blank: 'Any'} %>
+    <%= submit_tag "Add Modifier" %>
+  <% end %>
+</div>
+
