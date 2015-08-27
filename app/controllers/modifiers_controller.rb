@@ -28,7 +28,7 @@ class ModifiersController < ApplicationController
 
     respond_to do |format|
       if @modifier.save
-        format.html { redirect_to @modifier, notice: 'Modifier was successfully created.' }
+        format.html { redirect_to modifiers_path, notice: 'Modifier was successfully created.' }
         format.json { render :show, status: :created, location: @modifier }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ModifiersController < ApplicationController
   def update
     respond_to do |format|
       if @modifier.update(modifier_params)
-        format.html { redirect_to @modifier, notice: 'Modifier was successfully updated.' }
+        format.html { redirect_to modifiers_path, notice: 'Modifier was successfully updated.' }
         format.json { render :show, status: :ok, location: @modifier }
       else
         format.html { render :edit }
