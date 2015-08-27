@@ -53,3 +53,5 @@ end
 
 gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
+
+gem 'rails_12factor', group: :production
