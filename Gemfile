@@ -52,3 +52,4 @@ group :development, :test do
 end
 
 gem 'paperclip'
+gem 'aws-sdk', '~> 1.6'

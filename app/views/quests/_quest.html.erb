@@ -4,7 +4,7 @@
     <div class="title"><%=quest.title%></div>
     <span class="roll"><%=quest.roll%>+</span>
   </div>
-  <div class="quest_picture">...</div>
+  <div class="quest_picture"><%= image_tag quest.image.url(:med)%></div>
   <div class="quest_text"><%=quest.text%></div>
   <div class="quest_modifiers">
     <% quest.modifier_instances.each do |mi| %>

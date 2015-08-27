@@ -31,8 +31,12 @@
 }
 
 .quest_picture, .helper_picture {
-  height: 150px;
+  height: 200px;
   padding: 10px;
+  text-align: center;
+  img {
+    border: 2px solid black;
+  }
 }
 
 .quest_text, .helper_text {
