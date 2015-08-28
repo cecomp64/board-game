@@ -16,6 +16,10 @@ Gas station space.
 
 Use dog tags as player tokens.
 
+Some helpers are side quests.  Hold them in your hand until you complete them.  Complete them by doing silly things.  Side quests can be worth points at the end.
+
+Have some kind of Final Quest cards that give points to other players in funny ways.  These are at the end of the game.  Maybe pick one for a variety of outcomes.
+
 ## Events
 
 * Taiko drumming (Jon, Cat, Carl)

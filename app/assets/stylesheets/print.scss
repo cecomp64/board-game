@@ -1,0 +1,10 @@
+
+@media print{
+  @import '_quests';
+
+  .quest_wrapper, .helper_wrapper {
+    page-break-inside: avoid;
+  }
+}
+
+

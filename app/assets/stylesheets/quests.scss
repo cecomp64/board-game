@@ -1,58 +1,6 @@
 // Place all the styles related to the Quests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.quest_wrapper, .helper_wrapper {
-  width: 400px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  float: left;
-}
-
-
-.quest_card, .helper_card {
-  width: 400px;
-  border: black solid;
-  height: 450px;
-}
-
-.quest_header, .helper_header {
-  padding: 10px;
-  background: yellow;
-  font-weight: bold;
-
-  .roll {
-    color: blue;
-  }
-
-  .title {
-    text-align: center;
-  }
-}
-
-.quest_picture, .helper_picture {
-  height: 200px;
-  padding: 10px;
-  text-align: center;
-  img {
-    border: 2px solid black;
-  }
-}
-
-.quest_text, .helper_text {
-  padding: 10px;
-}
-
-.quest_modifiers, .helper_modifiers {
-  padding: 10px;
-}
-
-// Edit styles
-.right {
-  width: 49%;
-  float: left;
-}
-.left {
-  width: 450px;
-  float: left;
+@media screen {
+  @import '_quests';
 }
