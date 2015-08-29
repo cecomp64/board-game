@@ -1,5 +1,5 @@
 <h1>Editing Helper</h1>
-
+<p><%= link_to "< All Helpers", helpers_path%> | <%= link_to "New Helper", new_helper_path %></p>
 <div class="left">
   <%= render partial: "helper", locals: {helper:@helper} %>
 </div>

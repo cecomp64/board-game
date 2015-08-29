@@ -6,6 +6,9 @@ class QuestsController < ApplicationController
   # GET /quests.json
   def index
     @quests = Quest.all
+    @easy = []
+    @medium = []
+    @hard = []
   end
 
   # GET /quests/1

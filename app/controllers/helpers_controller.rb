@@ -76,7 +76,7 @@ class HelpersController < ApplicationController
   def update
     respond_to do |format|
       if @helper.update(helper_params)
-        format.html { redirect_to @helper, notice: 'Helper was successfully updated.' }
+        format.html { redirect_to edit_helper_path(@helper), notice: 'Helper was successfully updated.' }
         format.json { render :show, status: :ok, location: @helper }
       else
         format.html { render :edit }
