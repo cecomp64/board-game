@@ -21,6 +21,7 @@
   padding: 10px;
   background: yellow;
   font-weight: bold;
+  overflow: auto;
 
   .roll {
     color: blue;
@@ -28,6 +29,11 @@
 
   .title {
     text-align: center;
+  }
+
+  .points {
+    float: right;
+    color: orange;
   }
 }
 
