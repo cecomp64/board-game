@@ -103,6 +103,6 @@ class HelpersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def helper_params
-      params.require(:helper).permit(:title, :text)
+      params.require(:helper).permit(:title, :text, :geography_id, :image)
     end
 end
