@@ -11,6 +11,9 @@
       <%= mi.to_words %>
     <% end %>
   </div>
+  <div class="helper_bottom" <%= helper.geography ? "style=background-color:#{helper.geography.color};color:white;" : ""%>>
+    <%= helper.geography ? helper.geography.name : "Any Geography" %>
+  </div>
 </div>
 <div class="web-only">
   <%= link_to "Edit", edit_helper_path(helper) %> | 
