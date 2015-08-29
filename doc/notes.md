@@ -30,3 +30,35 @@ Have some kind of Final Quest cards that give points to other players in funny w
 * Livermore wine tasting (Sean, Angela, Cat, Carl)
   * Cat got sprayed with fruity wine twice
 
+
+# Rules
+
+Each player will complete one quest per geography.
+
+1st place - 10 points
+2nd place - 5 points
+
+Modifications
+
+- Fewer bad cards
+- Less draw 1 helper cards
+- Less discard helper cards
+- Lose a turn is pretty good
+- Highlight multiple actions so they are easy to see and not forgotten
+- "Move two spaces if you roll a 6"
+- "Add one to roll OR move player back a space"
+  - Modifiers and (modifiers or)
+
+- Separate quests by region
+  - Bay area quests should be around the same number? harder?
+  - First quest easy
+  - Last part harder
+
+- Starter cards
+  - Special cards (marked with any geography)
+
+Helpers
+- Select a card at random from other players
+- Roll two dice and pick the higher of the two
+- Roll two and add them together?
+- Roll two then divide by two.  Round up
