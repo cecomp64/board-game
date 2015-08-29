@@ -23,11 +23,13 @@
 <h3>By Geography</h3>
 <ul>
   <% 
-    Geography.all.each do |geo| 
+    geo_l = Geography.all.to_a
+    geo_l << nil
+    geo_l.each do |geo| 
       geo_helpers = @helpers.select{|h| h.geography == geo}
   %>
   <li>
-  <%= geo.name %>: <%= geo_helpers.size %> (<%= (geo_helpers.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+  <%= geo ? geo.name : "No Geogrpahy" %>: <%= geo_helpers.size %> (<%= (geo_helpers.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
     <p><%= geo_helpers.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
   </li>
   <% end %>
