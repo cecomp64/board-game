@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829075006) do
+ActiveRecord::Schema.define(version: 20150829161137) do
 
   create_table "geographies", force: :cascade do |t|
     t.string   "name"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 20150829075006) do
     t.text     "text"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "space_id"
     t.string   "modifier_id"
     t.integer  "roll",               default: 4
     t.string   "image_file_name"
@@ -95,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150829075006) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "points",             default: 10
+    t.integer  "geography_id"
   end
 
   create_table "spaces", force: :cascade do |t|

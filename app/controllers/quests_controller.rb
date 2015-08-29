@@ -6,9 +6,9 @@ class QuestsController < ApplicationController
   # GET /quests.json
   def index
     @quests = Quest.all
-    @easy = []
-    @medium = []
-    @hard = []
+    @easy = @quests.select{|q| q.easy?}
+    @medium = @quests.select{|q| q.medium?}
+    @hard = @quests.select{|q| q.hard?}
   end
 
   # GET /quests/1

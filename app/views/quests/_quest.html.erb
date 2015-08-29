@@ -12,6 +12,9 @@
       <%= mi.to_words %>
     <% end %>
   </div>
+  <div class="quest_bottom" <%= quest.geography ? "style=background-color:#{quest.geography.color};color:white;" : ""%>>
+    <%= quest.geography ? quest.geography.name : "Any Geography" %>
+  </div>
 </div>
 <div class="web-only">
   <%= link_to "Edit", edit_quest_path(quest) %>

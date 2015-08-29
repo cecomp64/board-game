@@ -2,6 +2,40 @@
 <p id="notice"><%= notice %></p>
 <p><%= link_to "New Quest", new_quest_path %></p>
 
+<h2>Balance</h2>
+<p>Total Quests: <%= @quests.count %></p>
+
+<h3>By Difficulty</h3>
+<ul>
+  <li>
+    Easy Quests: <%= @easy.size %> (<%= (@easy.size.to_f/@quests.count.to_f * 100).round(2) %>)
+    <p><%= @easy.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <li>
+    Medium Quests: <%= @medium.size %> (<%= (@medium.size.to_f/@quests.count.to_f * 100).round(2) %>)
+    <p><%= @medium.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <li>
+    Hard Quests: <%= @hard.size %> (<%= (@hard.size.to_f/@quests.count.to_f * 100).round(2) %>)
+    <p><%= @hard.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+</ul>
+<h3>By Geography</h3>
+<ul>
+  <% 
+    geo_l = Geography.all.to_a
+    geo_l << nil
+    geo_l.each do |geo| 
+      geo_quests = @quests.select{|h| h.geography == geo}
+  %>
+  <li>
+  <%= geo ? geo.name : "No Geogrpahy" %>: <%= geo_quests.size %> (<%= (geo_quests.size.to_f/@quests.count.to_f * 100).round(2)%>%)
+    <p><%= geo_quests.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <% end %>
+</ul>
+
+
 <% @quests.each do |quest| %>
   <%= render partial: "quest", locals: {quest:quest} %>
 <% end %>
