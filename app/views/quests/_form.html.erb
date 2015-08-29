@@ -27,6 +27,10 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
+  <div class="field">
+    <%= f.label :geography_id %><br>
+    <%= f.select "geography_id", options_from_collection_for_select(Geography.all, "id", "name", selected: @quest.geography_id), {include_blank: 'Any'} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
