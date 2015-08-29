@@ -5,6 +5,10 @@
   .quest_wrapper, .helper_wrapper {
     page-break-inside: avoid;
   }
+
+  .web-only {
+    display: none;
+  }
 }
 
 
