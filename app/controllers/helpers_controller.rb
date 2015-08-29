@@ -5,6 +5,9 @@ class HelpersController < ApplicationController
   # GET /helpers.json
   def index
     @helpers = Helper.all
+    @good = @helpers.select{|h| h.good?}
+    @bad = @helpers.select{|h| h.bad?}
+    @nuetral = @helpers.select{|h| h.nuetral?}
   end
 
   # GET /helpers/1

@@ -15,4 +15,17 @@ class ModifierInstance < ActiveRecord::Base
 
     return description
   end
+
+  def good?
+    return modifier.good?
+  end
+  def bad?
+    return modifier.bad?
+  end
+  def nuetral?
+    return modifier.nuetral?
+  end
+  def balance
+    return modifier.balance
+  end
 end

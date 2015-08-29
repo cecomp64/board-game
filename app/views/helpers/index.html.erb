@@ -3,6 +3,38 @@
 <h1>Listing Helpers</h1>
 <p><%= link_to "New Helper", new_helper_path %></p>
 
+<h2>Balance</h2>
+  Total Cards: <%= @helpers.count %>
+<h3>By Helpfulness</h3>
+<ul>
+  <li>
+  Good Cards: <%= @good.size %> (<%= (@good.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+    <p><%= @good.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <li>
+    Bad Cards: <%= @bad.size %> (<%= (@bad.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+    <p><%= @bad.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <li>
+    Nuetral Cards: <%= @nuetral.size %> (<%= (@nuetral.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+    <p><%= @nuetral.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+</ul>
+<h3>By Geography</h3>
+<ul>
+  <% 
+    Geography.all.each do |geo| 
+      geo_helpers = @helpers.select{|h| h.in_geo?(geo)}
+  %>
+  <li>
+  <%= geo.name %>: <%= geo_helpers.size %> (<%= (geo_helpers.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+    <p><%= geo_helpers.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
+  </li>
+  <% end %>
+</ul>
+
+<h2>Cards</h2>
+
 <% @helpers.each do |helper| %>
   <%= render partial: "helper", locals: {helper: helper} %>
 <% end %>

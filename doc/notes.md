@@ -12,7 +12,9 @@ Might add a detour - one route is longer than the other.  You can collect potent
 
 Bidding on something at junctures in the road.
 
-Gas station space.
+Gas station space (draw a card).  How do you move past this?  
+* This could be exchange helpers for points.  Points are listed on the helper card.  Different gas station have different multiplier
+* Points tokens?  Maybe just use cards... what about multipliers?
 
 Use dog tags as player tokens.
 
