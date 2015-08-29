@@ -62,7 +62,7 @@ class HelpersController < ApplicationController
 
     respond_to do |format|
       if @helper.save
-        format.html { redirect_to @helper, notice: 'Helper was successfully created.' }
+        format.html { redirect_to edit_helper_path(@helper), notice: 'Helper was successfully created.' }
         format.json { render :show, status: :created, location: @helper }
       else
         format.html { render :new }
