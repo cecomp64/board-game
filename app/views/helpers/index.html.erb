@@ -27,9 +27,15 @@
     geo_l << nil
     geo_l.each do |geo| 
       geo_helpers = @helpers.select{|h| h.geography == geo}
+      good = geo_helpers.select{|h| h.good?}
+      bad = geo_helpers.select{|h| h.bad?}
+      nuetral = geo_helpers.select{|h| h.nuetral?}
   %>
   <li>
-  <%= geo ? geo.name : "No Geogrpahy" %>: <%= geo_helpers.size %> (<%= (geo_helpers.size.to_f/@helpers.count.to_f * 100).round(2)%>%)
+  <%= geo ? geo.name : "No Geogrpahy" %>: <%= geo_helpers.size %> (<%= (geo_helpers.size.to_f/@helpers.count.to_f * 100).round(2)%>%) 
+  <%= (good.size.to_f/geo_helpers.size.to_f * 100).round(2)%>% Good,
+  <%= (bad.size.to_f/geo_helpers.size.to_f * 100).round(2)%>% Bad,
+  <%= (nuetral.size.to_f/geo_helpers.size.to_f * 100).round(2)%>% Nuetral
     <p><%= geo_helpers.map{|h| link_to(h.title, h)}.join(', ').html_safe %></p>
   </li>
   <% end %>
