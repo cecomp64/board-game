@@ -1,32 +1,41 @@
 <div class="player">
   <h2><%= player.name %> - <%= player.points %></h2>
-  <% if player.quest %>
-    <%= render partial: "quests/quest", locals: {quest: player.quest, game: @game, player: player} %>
-  <% else %>
-    <div class="quest_wrapper">
-      <h3>Choose a Quest</h3>
-      <%= form_tag controller: :games, action: :draw_quest do %>
-        <%= hidden_field_tag :id, @game.id %>
-        <%= hidden_field_tag :player_id, player.id %>
-        <%= select_tag "geography_id", options_from_collection_for_select(Geography.all, "id", "name") %>
-        <%= submit_tag "Draw Quest Card" %>
+  <% if @game && @game.current_player == player %>
+    <% if player.quest %>
+      <%= render partial: "quests/quest", locals: {quest: player.quest, game: @game, player: player} %>
+    <% else %>
+      <div class="quest_wrapper">
+        <h3>Choose a Quest</h3>
+        <%= form_tag controller: :games, action: :draw_quest do %>
+          <%= hidden_field_tag :id, @game.id %>
+          <%= hidden_field_tag :player_id, player.id %>
+          <%= select_tag "geography_id", options_from_collection_for_select(Geography.all, "id", "name") %>
+          <%= submit_tag "Draw Quest Card" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="player_helpers">
+      <h3>Modifiers In Play</h3>
+      <%= player.modifier_instances.count == 0 ? "None" : "" %>
+      <ul>
+        <% player.modifier_instances.each do |mi| %>
+          <li><%= mi.to_words %></li>
+        <% end %>
+      </ul>
+      <h3>Helper Cards</h3>
+      <%= player.helpers.count == 0 ? "None" : "" %>
+      <div>
+        <%= form_tag controller: :games, action: :draw_helper do %>
+          <%= hidden_field_tag :id, @game.id %>
+          <%= hidden_field_tag :player_id, player.id %>
+          <%= select_tag "geography_id", options_from_collection_for_select(Geography.all, "id", "name") %>
+          <%= submit_tag "Draw Helper Card" %>
+        <% end %>
+      <% player.helpers.each do |h| %>
+        <%= render partial: "helpers/helper", locals: {helper: h, game: @game, player: player} %>
       <% end %>
+      </div>
     </div>
   <% end %>
-  <div class="player_helpers">
-    <h3>Helpers</h3>
-    <%= player.helpers.count == 0 ? "None" : "" %>
-    <div>
-      <%= form_tag controller: :games, action: :draw_helper do %>
-        <%= hidden_field_tag :id, @game.id %>
-        <%= hidden_field_tag :player_id, player.id %>
-        <%= select_tag "geography_id", options_from_collection_for_select(Geography.all, "id", "name") %>
-        <%= submit_tag "Draw Helper Card" %>
-      <% end %>
-    <% player.helpers.each do |h| %>
-      <%= render partial: "helpers/helper", locals: {helper: h, game: @game, player: player} %>
-    <% end %>
-    </div>
-  </div>
 </div>
 

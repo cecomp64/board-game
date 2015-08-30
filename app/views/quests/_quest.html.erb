@@ -20,6 +20,7 @@
   <% if game.nil? %>
     <%= link_to "Edit", edit_quest_path(quest) %>
   <% else %>
+    <%= link_to "Complete", discard_quest_path(game, quest, player, complete: true) %> | 
     <%= link_to "Discard", discard_quest_path(game, quest, player) %>
   <% end %>
 </div>

@@ -3,9 +3,12 @@
 <% if @game.turn == 0 %>
   <p><%= link_to "Start Game", start_game_path(@game) %></p>
 <% else %>
-  <p>Turn: <%= @game.turn %> - <%= @game.current_player.name %></p>
+  <p>
+  Turn: <%= @game.turn %> - <%= @game.current_player.name %>
+  <%= link_to "Next Player", next_turn_path(@game) %>
+  </p>
+  <% @game.players.each do |player| %>
+    <%= render partial: "players/player", locals: {player:player} %>
+  <% end %>
 <% end %>
 
-<% @game.players.each do |player| %>
-  <%= render partial: "players/player", locals: {player:player} %>
-<% end %>

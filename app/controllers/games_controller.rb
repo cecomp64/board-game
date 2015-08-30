@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy, :start, :draw_quest, :discard_quest, :draw_helper, :discard_helper]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :start, :draw_quest, :discard_quest, :draw_helper, :discard_helper, :next_turn]
 
   # GET /games
   # GET /games.json
@@ -92,6 +92,7 @@ class GamesController < ApplicationController
   def discard_helper
     helper = Helper.where(id: params[:helper_id]).first
     player = Player.where(id: params[:player_id]).first
+    play = params[:play]
 
     if helper and player
       if @game.helper_discards.include? helper
@@ -99,7 +100,8 @@ class GamesController < ApplicationController
       else
         @game.helper_discards << helper
         player.helpers.delete helper
-        note = "Discarded helper #{helper.title}"
+        player.modifier_instances = helper.modifier_instances if(play)
+        note = "#{play ? 'Played' : 'Discarded'} helper #{helper.title}"
       end
     else
       note = "Could not discard helper #{params[:helper_id]} for player #{params[:player_id]}"
@@ -113,6 +115,7 @@ class GamesController < ApplicationController
   def discard_quest
     quest = Quest.where(id: params[:quest_id]).first
     player = Player.where(id: params[:player_id]).first
+    complete = params[:complete]
 
     if quest and player
       if @game.quest_discards.include? quest
@@ -120,8 +123,9 @@ class GamesController < ApplicationController
       else
         @game.quest_discards << quest
         player.quest = nil
+        player.points += quest.points if(complete)
         player.save
-        note = "Discarded quest #{quest.title}"
+        note = "#{complete ? 'Completed' : 'Discarded'} quest #{quest.title}"
       end
     else
       note = "Could not discard quest #{params[:quest_id]} for player #{params[:player_id]}"
@@ -132,6 +136,34 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit
   def edit
+  end
+
+  def next_turn
+    players = @game.players.to_a
+    p_idx = players.find_index(@game.current_player)
+
+    if p_idx.nil?
+      note = "Could not find player #{@game.current_player.name}"
+    else
+      n_idx = p_idx + 1
+      n_player = players[n_idx]
+
+      @game.current_player.modifier_instances = []
+
+      # Done with all players, next turn
+      if n_player.nil?
+        note = "Beginning next turn"
+        @game.current_player = players.first
+        @game.turn += 1
+        @game.save
+      else
+        # Next player in the same turn
+        @game.current_player = n_player
+        @game.save
+      end
+    end
+
+    redirect_to @game, notice: note
   end
 
   def add_player
@@ -146,7 +178,7 @@ class GamesController < ApplicationController
       note = "could not add player #{params[:player]} to game #{params[:game_id]}"
     end
 
-    render :edit, notice: note
+    redirect_to edit_game_path(@game), notice: note
   end
   # POST /games
   # POST /games.json
