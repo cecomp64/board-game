@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :games
+  resources :players
   resources :tags
   resources :modifier_instances
   resources :modifiers
@@ -7,6 +9,12 @@ Rails.application.routes.draw do
   resources :helpers
   resources :quests
 
+  get 'games/discard_helper/:id/:helper_id/:player_id' => 'games#discard_helper', as: :discard_helper
+  post 'games/draw_helper' => 'games#draw_helper'
+  get 'games/discard_quest/:id/:quest_id/:player_id' => 'games#discard_quest', as: :discard_quest
+  post 'games/draw_quest' => 'games#draw_quest'
+  get 'games/start/:id' => 'games#start', as: :start_game
+  post 'games/add_player' => 'games#add_player'
   post 'helpers/add_modifier' => 'helpers#add_modifier'
   post 'quests/add_modifier' => 'quests#add_modifier'
   # The priority is based upon order of creation: first created -> highest priority.

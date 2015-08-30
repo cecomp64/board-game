@@ -1,0 +1,17 @@
+<h1>Editing Game</h1>
+
+<h2>Game Details</h2>
+<%= render 'form' %>
+
+<h2>Add Players</h2>
+<ul>
+<% @game.players.each do |p| -%>
+  <li><strong><%= p.name -%></strong></li>
+<%- end -%>
+</ul>
+<%= form_tag controller: :games, action: :add_player do %>
+  <%= hidden_field_tag :game_id, @game.id %>
+  <%= select_tag "player", options_from_collection_for_select(Player.all, "id", "name") %>
+  <%= submit_tag "Add Player" %>
+<% end %>
+<%= link_to "New Player", new_player_path %>

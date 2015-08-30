@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @player.space_id %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @player.character_id %>
+</p>
+
+<p>
+  <strong>Quest:</strong>
+  <%= @player.quest_id %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @player.points %>
+</p>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

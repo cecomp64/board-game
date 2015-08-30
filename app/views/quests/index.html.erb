@@ -37,5 +37,5 @@
 
 
 <% @quests.each do |quest| %>
-  <%= render partial: "quest", locals: {quest:quest} %>
+  <%= render partial: "quest", locals: {quest:quest, game: nil, player:nil} %>
 <% end %>

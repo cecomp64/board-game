@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829161137) do
+ActiveRecord::Schema.define(version: 20150829235409) do
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "winner_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "turn",              default: 0
+    t.integer  "current_player_id"
+  end
+
+  create_table "games_players", id: false, force: :cascade do |t|
+    t.integer "game_id",   null: false
+    t.integer "player_id", null: false
+  end
+
+  add_index "games_players", ["game_id", "player_id"], name: "index_games_players_on_game_id_and_player_id"
 
   create_table "geographies", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +35,13 @@ ActiveRecord::Schema.define(version: 20150829161137) do
     t.datetime "updated_at", null: false
     t.string   "color"
   end
+
+  create_table "helper_discard_piles", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "helper_id"
+  end
+
+  add_index "helper_discard_piles", ["game_id", "helper_id"], name: "index_helper_discard_piles_on_game_id_and_helper_id"
 
   create_table "helpers", force: :cascade do |t|
     t.string   "title"
@@ -37,6 +60,13 @@ ActiveRecord::Schema.define(version: 20150829161137) do
     t.integer "helper_id",            null: false
     t.integer "modifier_instance_id", null: false
   end
+
+  create_table "helpers_players", id: false, force: :cascade do |t|
+    t.integer "helper_id", null: false
+    t.integer "player_id", null: false
+  end
+
+  add_index "helpers_players", ["player_id", "helper_id"], name: "index_helpers_players_on_player_id_and_helper_id"
 
   create_table "helpers_tags", id: false, force: :cascade do |t|
     t.integer "helper_id", null: false
@@ -81,6 +111,21 @@ ActiveRecord::Schema.define(version: 20150829161137) do
     t.integer "modifier_id", null: false
     t.integer "tag_id",      null: false
   end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "quest_id"
+    t.integer "space_id"
+    t.integer "points"
+    t.string  "name"
+  end
+
+  create_table "quest_discard_piles", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "quest_id"
+  end
+
+  add_index "quest_discard_piles", ["game_id", "quest_id"], name: "index_quest_discard_piles_on_game_id_and_quest_id"
 
   create_table "quests", force: :cascade do |t|
     t.string   "title"

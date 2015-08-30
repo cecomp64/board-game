@@ -38,5 +38,5 @@
 <h2>Cards</h2>
 
 <% @helpers.each do |helper| %>
-  <%= render partial: "helper", locals: {helper: helper} %>
+  <%= render partial: "helper", locals: {helper: helper, game: nil, player: nil} %>
 <% end %>

@@ -17,7 +17,11 @@
   </div>
 </div>
 <div class="web-only">
-  <%= link_to "Edit", edit_helper_path(helper) %> | 
-  <%= link_to "Delete", helper, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if game.nil? %>
+    <%= link_to "Edit", edit_helper_path(helper) %> | 
+    <%= link_to "Delete", helper, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% else %>
+    <%= link_to "Discard", discard_helper_path(game, helper, player) %>
+  <% end %>
 </div>
 </div>
