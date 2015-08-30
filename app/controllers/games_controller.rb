@@ -100,7 +100,7 @@ class GamesController < ApplicationController
       else
         @game.helper_discards << helper
         player.helpers.delete helper
-        player.modifier_instances = helper.modifier_instances if(play)
+        player.modifier_instances += helper.modifier_instances if(play)
         note = "#{play ? 'Played' : 'Discarded'} helper #{helper.title}"
       end
     else
